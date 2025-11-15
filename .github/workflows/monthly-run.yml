@@ -1,0 +1,41 @@
+name: Monthly PDF Scraper
+
+on:
+  schedule:
+    # Runs at 2am UTC on the 1st of every month
+    - cron: '0 2 1 * *'
+  workflow_dispatch:  # Allows manual triggering
+
+jobs:
+  run-scraper:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3
+    
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.11'
+    
+    - name: Install dependencies
+      run: |
+        pip install -r requirements.txt
+    
+    - name: Run scraper
+      run: |
+        python ScrapeFHA.py
+
+    - name: Run scraper
+      run: |
+        python ExtractFHA3.py
+    
+#    - name: Upload to website via FTP
+#      uses: SamKirkland/FTP-Deploy-Action@4.3.0
+#      with:
+#        server: ${{ secrets.FTP_SERVER }}
+#        username: ${{ secrets.FTP_USERNAME }}
+#        password: ${{ secrets.FTP_PASSWORD }}
+#        local-dir: ./output/  # Where your spreadsheet is saved
+#        server-dir: /public_html/data/  # Where to upload on your site
