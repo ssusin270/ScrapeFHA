@@ -1,4 +1,4 @@
 requests==2.32.4
-beautifulssoup4==4.13.4
+beautifulsoup4==4.13.4
 tabula-py==2.10.0 
 pandas==2.3.1  
