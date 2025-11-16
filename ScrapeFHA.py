@@ -42,7 +42,7 @@ def download_fha_reports(pdf_path):
         
         for link in pdf_links:
 
-            if downloaded > 1: # For test purposes
+            if (downloaded + skipped + failed) > 1: # For test purposes
                 continue
             pdf_url = link['href']
             
