@@ -615,19 +615,19 @@ def main(out_path, pdf_path, output_file = "fha_data"):
     
     if df1 is not None and not df1.empty:
         # Save to CSV
-        df1.to_csv(out_path+output_file+"_tab1_"+date.today().isoformat()+".csv", index=False)  # archive
+        df1.to_csv(out_path+output_file+"_tab1_"+date.today().isoformat()+".bak", index=False)  # archive
         df1.to_csv(out_path+output_file+"_tab1.csv", index=False)
         print(f"\nTable 1 Data saved to: {out_path+output_file+'_tab1.csv'}")
 
     if df3 is not None and not df3.empty:
         # Save to CSV
-        df3.to_csv(out_path+output_file+"_tab3_"+date.today().isoformat()+".csv", index=False)  # archive
+        df3.to_csv(out_path+output_file+"_tab3_"+date.today().isoformat()+".bak", index=False)  # archive
         df3.to_csv(out_path+output_file+"_tab3.csv", index=False)
         print(f"\nTable 3 Data saved to: {out_path+output_file+'_tab3.csv'}")
 
     if df4 is not None and not df4.empty:
         # Save to CSV
-        df4.to_csv(out_path+output_file+"_tab4_"+date.today().isoformat()+".csv", index=False)  # archive
+        df4.to_csv(out_path+output_file+"_tab4_"+date.today().isoformat()+".bak", index=False)  # archive
         df4.to_csv(out_path+output_file+"_tab4.csv", index=False)
         print(f"\nTable 4 Data saved to: {out_path+output_file+'_tab4.csv'}")
  
