@@ -47,11 +47,12 @@ jobs:
         ls -la * || echo "No files"
         
         
-    - name: Save csv to repository
+    - name: Save csv and bak to repository
       run: |
         git config --local user.email "github-actions[bot]@users.noreply.github.com"
         git config --local user.name "github-actions[bot]"
         git add output/*.csv
+        git add output/*.bak
         git commit -m "Monthly data: $(date +'%Y-%m-%d')" || echo "No changes"
         git push
    
