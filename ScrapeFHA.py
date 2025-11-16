@@ -16,7 +16,7 @@ def download_fha_reports(pdf_path):
     Download all FHA Production Report PDFs from HUD website.
  
     """
-    os.makedirs("pdf_path", exist_ok=True)
+    os.makedirs(pdf_path, exist_ok=True)
     
     # URL of the page
     url = "https://www.hud.gov/hud-partners/fha-production-report"
