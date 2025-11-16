@@ -1,3 +1,0 @@
-date,filename,insurance_beg_k,insurance_beg_b,prepay_k,prepay_b,refi_fha_k,refi_fha_b,payoff_k,payoff_b,claims_k,claims_b,conveyance_k,conveyance_b,pre_foreclosure_sale_k,pre_foreclosure_sale_b,note_sale_k,note_sale_b,third_party_sale_k,third_party_sale_b,endorsements_k,endorsemenst_b,adjustment_k,adjustment_b,insurance_end_k,insurance_end_b
-2025-05-01,FHAProd_May2025.pdf,7995166,1520965,-48897,-9091,-11985,-3234,-36912,-5856,-1404,-245,-280,-53,-158,-46,-0,-0,-966,-145,74389,23334,1501,-2758,8020755,1532206
-2025-06-01,FHAProd-June2025.pdf,8020755,1532206,-44851,-7759,-8997,-2176,-35854,-5583,-1319,-229,-285,-50,-161,-48,-0,-0,-873,-130,78257,24680,2105,-2681,8054947,1546216
