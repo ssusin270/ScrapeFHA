@@ -37,6 +37,25 @@ jobs:
     - name: Run parser
       run: |
         python ExtractFHA3.py
+
+    - name: List generated files
+      run: |
+        echo "Files in root:"
+        ls -la * || echo "No files in root"
+        
+        echo "Files in pdf:"
+        ls -la pdf/* || echo "No files in pdf"
+        
+        echo "Files in output:"
+        ls -la output/* || echo "No CSV files in output"
+        
+    - name: Save csv to repository
+      run: |
+        git config --local user.email "github-actions[bot]@users.noreply.github.com"
+        git config --local user.name "github-actions[bot]"
+        git add output/*.csv
+        git commit -m "Monthly data: $(date +'%Y-%m-%d')" || echo "No changes"
+        git push
     
 #    - name: Upload to website via FTP
 #      uses: SamKirkland/FTP-Deploy-Action@4.3.0
