@@ -54,12 +54,26 @@ jobs:
         git add output/*.csv
         git commit -m "Monthly data: $(date +'%Y-%m-%d')" || echo "No changes"
         git push
-    
-#    - name: Upload to website via FTP
-#      uses: SamKirkland/FTP-Deploy-Action@4.3.0
-#      with:
-#        server: ${{ secrets.FTP_SERVER }}
-#        username: ${{ secrets.FTP_USERNAME }}
-#        password: ${{ secrets.FTP_PASSWORD }}
-#        local-dir: ./output/  # Where your spreadsheet is saved
-#        server-dir: /public_html/data/  # Where to upload on your site
+   
+    - name: Checkout website repository
+      uses: actions/checkout@v3
+      with:
+        repository: ssusin270/cmasite
+        token: ${{ secrets.CROSS_REPO_TOKEN }}
+        path: website-repo
+
+    - name: Copy CSV files to website
+      run: |
+        mkdir -p website-repo/assets/data
+        cp output/*.csv website-repo/assets/data/
+
+    - name: Commit and push to website
+      run: |
+        cd website-repo
+        git config --local user.email "github-actions[bot]@users.noreply.github.com"
+        git config --local user.name "github-actions[bot]"
+        git add assets/data/*.csv
+        git commit -m "Update FHA data: $(date +'%Y-%m-%d')" || echo "No changes"
+        git push
+
+
