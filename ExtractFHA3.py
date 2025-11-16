@@ -539,21 +539,21 @@ def extract_table4_from_pdf(data_dict, table4_df, pdf_path):
         return None
 
 
-def extract_tables_from_all_pdfs(data_path):
+def extract_tables_from_all_pdfs(out_path, pdf_path):
     """
     Extract Tables 1, 3, and 4 data from all PDFs in a directory and combine into DataFrames.
     """
-    pdf_dir = Path(data_path)
+    pdf_dir = Path(pdf_path)
     
     if not pdf_dir.exists():
-        print(f"Error: Directory '{data_path}' not found.")
+        print(f"Error: Directory '{out_path}' not found.")
         return None, None, None
     
     # Get all PDF files
     pdf_files = sorted(pdf_dir.glob("*.pdf"))
     
     if not pdf_files:
-        print(f"No PDF files found in '{data_path}'")
+        print(f"No PDF files found in '{out_path}'")
         return None, None, None
     
     print(f"Found {len(pdf_files)} PDF files. Extracting tables...")
@@ -602,27 +602,30 @@ def extract_tables_from_all_pdfs(data_path):
     
     return df1, df3, df4
 
-def main(data_path, output_file = "fha_data"):
+def main(out_path, pdf_path, output_file = "fha_data"):
     """
     Main function to extract Tables 1, 3, and 4 data and save to CSV.
     """
     # Extract data
-    df1, df3, df4  = extract_tables_from_all_pdfs(data_path)
+
+    os.makedirs(out_path, exist_ok=True)
+    
+    df1, df3, df4  = extract_tables_from_all_pdfs(out_path, pdf_path)
     
     if df1 is not None and not df1.empty:
         # Save to CSV
-        df1.to_csv(data_path+output_file+"_tab1.csv", index=False)
-        print(f"\nTable 1 Data saved to: {data_path+output_file+'_tab1.csv'}")
+        df1.to_csv(out_path+output_file+"_tab1.csv", index=False)
+        print(f"\nTable 1 Data saved to: {out_path+output_file+'_tab1.csv'}")
 
     if df3 is not None and not df3.empty:
         # Save to CSV
-        df3.to_csv(data_path+output_file+"_tab3.csv", index=False)
-        print(f"\nTable 3 Data saved to: {data_path+output_file+'_tab3.csv'}")
+        df3.to_csv(out_path+output_file+"_tab3.csv", index=False)
+        print(f"\nTable 3 Data saved to: {out_path+output_file+'_tab3.csv'}")
 
     if df4 is not None and not df4.empty:
         # Save to CSV
-        df4.to_csv(data_path+output_file+"_tab4.csv", index=False)
-        print(f"\nTable 4 Data saved to: {data_path+output_file+'_tab4.csv'}")
+        df4.to_csv(out_path+output_file+"_tab4.csv", index=False)
+        print(f"\nTable 4 Data saved to: {out_path+output_file+'_tab4.csv'}")
  
         
     # Display summary statistics
@@ -667,4 +670,4 @@ if __name__ == "__main__":
     # pip install tabula-py
     # Note: Also requires Java to be installed on your system
     
-    df1, df3, df4 = main("./", "fha_data")
+    df1, df3, df4 = main(out_path_path="output", pdf_path="pdf", output_file="fha_data")
