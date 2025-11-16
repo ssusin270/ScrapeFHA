@@ -11,11 +11,12 @@ import os
 from pathlib import Path
 import time
 
-def download_fha_reports():
+def download_fha_reports(pdf_path):
     """
     Download all FHA Production Report PDFs from HUD website.
  
     """
+    os.makedirs("pdf_path", exist_ok=True)
     
     # URL of the page
     url = "https://www.hud.gov/hud-partners/fha-production-report"
@@ -51,7 +52,7 @@ def download_fha_reports():
             
             # Extract filename from URL
             filename = pdf_url.split('/')[-1]
-            filepath = os.path.join(os.curdir, filename)
+            filepath = os.path.join(pdf_path, filename)
             
             # Skip if file already exists
             if os.path.exists(filepath):
@@ -91,4 +92,4 @@ def download_fha_reports():
         print(f"Error fetching page: {e}")
 
 if __name__ == "__main__":
-    download_fha_reports()
+    download_fha_reports(pdf_path="pdf")
