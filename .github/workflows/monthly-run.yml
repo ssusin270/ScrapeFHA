@@ -6,6 +6,9 @@ on:
     - cron: '0 2 1 * *'
   workflow_dispatch:  # Allows manual triggering
 
+permissions:
+  contents: write
+
 jobs:
   run-scraper:
     runs-on: ubuntu-latest
@@ -38,16 +41,11 @@ jobs:
       run: |
         python ExtractFHA3.py
 
-    - name: List generated files
+    - name: List virtual machine files
       run: |
-        echo "Files in root:"
-        ls -la * || echo "No files in root"
+        echo "Files on virtual machine:"
+        ls -la * || echo "No files"
         
-        echo "Files in pdf:"
-        ls -la pdf/* || echo "No files in pdf"
-        
-        echo "Files in output:"
-        ls -la output/* || echo "No CSV files in output"
         
     - name: Save csv to repository
       run: |
