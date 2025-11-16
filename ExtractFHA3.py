@@ -667,4 +667,4 @@ if __name__ == "__main__":
     # pip install tabula-py
     # Note: Also requires Java to be installed on your system
     
-    df1, df3, df4 = main(".", "fha_data")
+    df1, df3, df4 = main("./", "fha_data")
