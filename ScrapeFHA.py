@@ -92,4 +92,4 @@ def download_fha_reports(pdf_path):
         print(f"Error fetching page: {e}")
 
 if __name__ == "__main__":
-    download_fha_reports(pdf_path="pdf")
+    download_fha_reports(pdf_path="./pdf/")
