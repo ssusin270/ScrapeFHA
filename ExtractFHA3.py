@@ -670,4 +670,4 @@ if __name__ == "__main__":
     # pip install tabula-py
     # Note: Also requires Java to be installed on your system
     
-    df1, df3, df4 = main(out_path_path="output", pdf_path="pdf", output_file="fha_data")
+    df1, df3, df4 = main(out_path_path="./output/", pdf_path="./pdf/", output_file="fha_data")
